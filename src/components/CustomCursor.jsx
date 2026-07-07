@@ -5,6 +5,13 @@ export default function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 })
   const [clicked, setClicked] = useState(false)
   const [hidden, setHidden] = useState(true)
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => {
+    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  }, [])
+
+  if (isTouch) return null
 
   const springX = useSpring(0, { stiffness: 200, damping: 25 })
   const springY = useSpring(0, { stiffness: 200, damping: 25 })

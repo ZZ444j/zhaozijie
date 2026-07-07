@@ -22,7 +22,8 @@ function ParticleBackground() {
     const handleMouse = (e) => { mouseX = e.clientX; mouseY = e.clientY }
     window.addEventListener('mousemove', handleMouse)
 
-    const particles = Array.from({ length: 80 }, () => ({
+    const isMobile = window.innerWidth < 768
+    const particles = Array.from({ length: isMobile ? 35 : 80 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 2.5 + 0.8,
